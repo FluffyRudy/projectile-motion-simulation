@@ -33,7 +33,7 @@ class Simulation:
                 self.angle = degrees(atan2(vertical_distance, horizontal_distance))
 
             if event.type == pygame.MOUSEBUTTONUP:
-                ball = Ball(self.origin_pos, self.BALL_RADIUS, 100, self.angle)
+                ball = Ball(self.origin_pos, self.BALL_RADIUS, 60, self.angle)
                 self.ball_group.add(ball)
 
     def draw_line(self):
