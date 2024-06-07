@@ -62,10 +62,6 @@ class Simulation:
             pygame.display.update()
 
 
-import pygame
-import math
-
-
 class Ball(pygame.sprite.Sprite):
     GRAVITY = 10
 
