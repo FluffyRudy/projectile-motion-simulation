@@ -14,7 +14,7 @@ git clone https://github.com/FluffyRudy/projectile-motion-simulation.git
 Open a terminal and navigate to the directory where you cloned the repository. Then, run the following command to create a new virtual environment:
 This will create a new virtual environment named `venv`.
 ```bash
-cd zelda
+cd projectile-motion-simulation
 python3 -m venv .env
 ```
 
