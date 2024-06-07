@@ -4,6 +4,8 @@ import sys
 from random import randint, choice
 from math import sin, cos, atan2, radians, degrees, hypot
 
+SCREEN_COLOR = (100, 100, 100)
+
 
 class Simulation:
     FPS = 60
@@ -20,7 +22,7 @@ class Simulation:
         self.font = pygame.font.SysFont(None, 50)
         self.angle = 0
 
-        self.origin_pos = Vector2(0, self.limit_bound[1])
+        self.origin_pos = Vector2(0, self.limit_bound[1] - 200)
 
     def handle_event(self):
         for event in pygame.event.get():
@@ -43,7 +45,7 @@ class Simulation:
         while True:
             self.delta = self.clock.tick(self.FPS)
             self.handle_event()
-            self.screen.fill((0, 0, 0))
+            self.screen.fill(SCREEN_COLOR)
 
             angle = self.font.render(f"{self.angle}", True, "white")
             self.screen.blit(angle, (0, 0))
@@ -65,6 +67,7 @@ class Ball(pygame.sprite.Sprite):
     def __init__(self, pos: tuple[int, int], radius: int, speed: int, degree: float):
         super().__init__()
         self.image = pygame.Surface((radius * 2, radius * 2))
+        self.image.fill(SCREEN_COLOR)
         pos = pos[0], pos[1] - radius * 2
         self.rect = self.image.get_rect(center=pos)
         self.initial_position = Vector2(pos)
@@ -73,6 +76,7 @@ class Ball(pygame.sprite.Sprite):
         self.speed = speed
         self.angle = math.radians(degree)
         self.time = 0
+        self.color = get_random_rgb()
 
     def update(
         self,
@@ -90,7 +94,7 @@ class Ball(pygame.sprite.Sprite):
         )
         self.rect.x += self.direction * self.speed * math.cos(self.angle)
         pygame.draw.circle(
-            self.image, (255, 0, 0), (self.radius, self.radius), self.radius
+            self.image, self.color, (self.radius, self.radius), self.radius
         )
 
 
