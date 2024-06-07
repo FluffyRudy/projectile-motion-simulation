@@ -30,9 +30,14 @@ class Simulation:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEMOTION:
+                direction = 1
+                if event.pos[1] > self.origin_pos[1]:
+                    direction = -1
                 horizontal_distance = event.pos[0]
                 vertical_distance = self.limit_bound[1] - event.pos[1]
-                self.angle = degrees(atan2(vertical_distance, horizontal_distance))
+                self.angle = direction * degrees(
+                    atan2(vertical_distance, horizontal_distance)
+                )
 
             if event.type == pygame.MOUSEBUTTONUP:
                 ball = Ball(self.origin_pos, self.BALL_RADIUS, 60, self.angle)
@@ -68,7 +73,7 @@ class Ball(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.Surface((radius * 2, radius * 2))
         self.image.fill(SCREEN_COLOR)
-        pos = pos[0], pos[1] - radius * 2
+        pos = pos[0], pos[1] - radius
         self.rect = self.image.get_rect(center=pos)
         self.initial_position = Vector2(pos)
         self.direction = 1
@@ -93,8 +98,12 @@ class Ball(pygame.sprite.Sprite):
             - 0.5 * self.GRAVITY * self.time**2
         )
         self.rect.x += self.direction * self.speed * math.cos(self.angle)
+
         pygame.draw.circle(
             self.image, self.color, (self.radius, self.radius), self.radius
+        )
+        pygame.draw.circle(
+            self.image, (0, 0, 0), (self.radius, self.radius), self.radius, 5
         )
 
 
