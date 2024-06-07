@@ -40,8 +40,29 @@ Once the virtual environment is activated, you can install the required packages
 pip install -r requirements.txt
 ```
 
-5. **Running the game**
+5. **Running the simulation:**
 
 ```bash
 python3 main.py
 ```
+
+6. **Handling Input:**
+
+    - To enter the velocity value, click inside the input box.
+    - Type the desired velocity value using the keyboard.
+    - Press the Enter key to submit the velocity value.
+    - Alternatively, you can click outside the input box to submit the velocity value.
+
+7. **Accepting Data:**
+
+    - make sure input is numbers(numeric) although program handle (ignores) alphabet its always good to be careful
+    - The program accepts velocity input as numeric values entered via the keyboard.
+    - Pressing the Enter key or clicking outside the input box submits the entered velocity value.
+
+8. **Bugs report and issues:**
+
+  - If you enounter any bug or issues, please do tell
+  
+9. ## **License:😜(sounding fancy)**
+  - ### **MIT License**
+  - **you are free to do anything with this garbage code**
